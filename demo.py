@@ -1,23 +1,29 @@
 import streamlit as st
 import joblib
-from decisiontree import DecisionTree
+from Scripts.decisiontree import DecisionTree
+from Scripts.naive_bayes import NaiveBayes
+
 import pandas as pd
 import numpy as np 
 
 st.title('Stroke Prediction')
 
 # Load the custom decision tree model
-loaded_model = joblib.load(r'custom_tree_model_.pkl')
+loaded_model = joblib.load(r'Experiments\Model\naive_bayes_model.pkl')
 
 # Function to make predictions
 def make_prediction(data):
+    # Convert input data to DataFrame
+    df = pd.DataFrame(data, columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status'])
+    # df = pd.read_csv('x_test.csv')
     # Make predictions
-    prediction = loaded_model.predict(data)
+    print(df)
+    prediction = loaded_model.predict(df)
+    print(prediction)
     if prediction[0] == 1:
         return "Stroke Predicted"
     else:
         return "No Stroke Predicted"
-
 # Encode categorical features
 def encode_categorical_features(age, gender, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     # Encoding mappings
@@ -29,7 +35,7 @@ def encode_categorical_features(age, gender, hypertension, heart_disease, ever_m
     
     gender_encoding = {
         'Male': 1,
-        'Female': 2
+        'Female': 0
     }
     
     ever_married_encoding = {
@@ -84,21 +90,10 @@ if st.button('Predict'):
     # Encode categorical features
     age_encoded, gender_encoded, hypertension_encoded, heart_disease_encoded, ever_married_encoded, work_type_encoded, residence_type_encoded, avg_glucose_level, bmi, smoking_status_encoded = encode_categorical_features(age, gender, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status)
     
-    # Create a DataFrame with the input data
-    input_data = pd.DataFrame({
-        'gender': [gender_encoded],
-        'age': [age_encoded],
-        'hypertension': [1 if hypertension_encoded else 0],
-        'heart_disease': [1 if heart_disease_encoded else 0],
-        'ever_married': [ever_married_encoded],
-        'work_type': [work_type_encoded],
-        'Residence_type': [residence_type_encoded],
-        'avg_glucose_level': [avg_glucose_level],
-        'bmi': [bmi],
-        'smoking_status': [smoking_status_encoded]
-    })
+    # Create a numpy array with the input data
+    input_data = np.array([[gender_encoded, age_encoded, 1 if hypertension_encoded else 0, 1 if heart_disease_encoded else 0, ever_married_encoded, work_type_encoded, residence_type_encoded, avg_glucose_level, bmi, smoking_status_encoded]])
     
-    # Make predictions using the input data DataFrame
+    # Make predictions using the input data numpy array
     prediction = make_prediction(input_data)
     
     # Display the prediction result
