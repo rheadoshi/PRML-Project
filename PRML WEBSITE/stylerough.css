@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.slideshow {
+    margin-top: 20px;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.team ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team ul li {
+    margin-bottom: 5px;
+}
+
+.team ul li img {
+    width: 50px; /* Adjust image size here */
+    height: 50px; /* Adjust image size here */
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image round */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.team ul li a {
+    text-decoration: none;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.acknowledgment {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.contact {
+    background-color: #ddd;
+    padding: 20px;
+}
+
+.header-image {
+    width: 80%; /* Adjusted image size here */
+    height: auto;
+    display: block;
+    margin: auto; /* Center the image */
+}

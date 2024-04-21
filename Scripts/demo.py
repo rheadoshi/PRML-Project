@@ -1,13 +1,12 @@
 import streamlit as st
 import joblib
-from decisiontree import DecisionTree
 import pandas as pd
 import numpy as np 
 
 st.title('Stroke Prediction')
 
 # Load the custom decision tree model
-loaded_model = joblib.load(r'custom_tree_model_.pkl')
+loaded_model = joblib.load(r'Scripts\knn_model.pkl')
 
 # Function to make predictions
 def make_prediction(data):
@@ -29,7 +28,7 @@ def encode_categorical_features(age, gender, hypertension, heart_disease, ever_m
     
     gender_encoding = {
         'Male': 1,
-        'Female': 2
+        'Female': 0
     }
     
     ever_married_encoding = {
