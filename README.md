@@ -6,14 +6,7 @@ Stroke is the second leading cause of death globally, accounting for approximate
 
 Dataset: The dataset contains 5110 rows and 11 columns, with one additional target column 'stroke'.
 
-### Description of the features
 
-[Insert description of features here]
-
-### Data Visualisation
-
-![Visualization 1](https://example.com/visualization1.png)
-![Visualization 2](https://example.com/visualization2.png)
 
 # Data Pre-Processing and Preparation
 
@@ -27,10 +20,14 @@ We trained our data on several machine learning models including Decision Tree, 
 
 We evaluated the performance of our models using various evaluation metrics such as accuracy, precision, recall, and F1-score.
 
-# Results
-
-[Insert discussion of results and findings here]
 
 # Conclusion
 
-[Insert conclusion and final remarks here]
+The experimental setting included splitting the dataset into training and testing sets, evaluating
+models using metrics such as accuracy, precision, recall, and F1-score. Results were compared
+across the different approaches, highlighting their strengths and limitations.We observed that the
+best approach was the KNN approach. Although computationally expensive, it gave the best
+results in terms of precision, accuracy and recall. Future steps may involve further experimentation
+with hyperparameter tuning, feature selection, and model optimization, as well as exploration of
+ensemble methods or advanced neural network architectures for improved performance.
+
